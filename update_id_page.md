@@ -38,14 +38,13 @@ Within *r_decrypt_and_validate_image*, there exists logic that does exactly what
     - Depending on the security configuration of the controller, either verify the CRC of the section or its signature.
 * Keep pointers for each of the sections for further processing.
 
-If all sections have been found and validated successfully, we enter *r_write_firmware_to_internal_flash*, which processes the information section and updates the currently active ID Page.
-
+If all sections have been found and validated successfully, we enter *r_write_firmware_to_internal_flash*, which processes the information section and updates the currently active ID Page.\
 For example, there is logic to update the current ID Page based on values present within the information section:
 
 ![ID Page override](./resources/id_page_override.png)
 
-We note that the information section is not signed (but might have a CRC which we must update), so an arbitrary ID Page may be provided in the firmware image.
-
+We note that the information section is not signed (but might have a CRC which we must update), so an arbitrary ID Page may be provided in the firmware image.\
+\
 Finally, further down, we have the actual flash writing logic that commits the firmware chunks to non-volatile memory:
 
 ![Firmware flash write operations](./resources/flash_op.png)
