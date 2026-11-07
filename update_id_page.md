@@ -7,7 +7,7 @@ The general structure of a Phison firmware update for E12/E16/E18-based drives i
 * Main Phison header of size 0x200 bytes which holds information about the code/info sections within the firmware image, as well as some fields that identify the controller the firmware update targets.
 * A list of sections, each section includes a header of size 0x200 bytes with the *CODE BLOCK* magic.
     - An information section which does not contain code, but does contain information about the ID Page, for example.
-    - (Presumably) *Loader* section, which contains the code for the firmware loader. It is a code section, which is the *actual* binary the the BootROM verifies and loads. It is responsible for loading the actual firmware application to memory.
+    - (Presumably) *Loader* section, which contains the code for the firmware loader. It is a code section, which is the *actual* binary the BootROM verifies and loads. It is responsible for loading the actual firmware application to memory and jumping to it.
     - *FW* section, which contains the code for the firmware application. This contains the bulk of the controller's code.
 
 Recent firmware images are also encrypted, which means that when performing a firmware update, the currently running firmware must detect that based on the information in the sections' headers, decrypt the sections, verify them (possibly check the firmware signature) and only then write the firmware to non-volatile memory.
@@ -35,7 +35,7 @@ Within *r_decrypt_and_validate_image*, there exists logic that does exactly what
 * Locate each of the 3 sections within the firmware image.
     - For each section, if it is encrypted, decrypt it with the keys stored internally within the controller.
     - Perform sanity checks on the section.
-    - Depending on the security configuration of the controller, either verify the CRC of the section or its signature.
+    - Depending on the security configuration of the controller, verify either the CRC of the section or its signature.
 * Keep pointers for each of the sections for further processing.
 
 If all sections have been found and validated successfully, we enter *r_write_firmware_to_internal_flash*, which processes the information section and updates the currently active ID Page.\
@@ -43,7 +43,7 @@ For example, there is logic to update the current ID Page based on values presen
 
 ![ID Page override](./resources/id_page_override.png)
 
-We note that the information section is not signed (but might have a CRC which we must update), so an arbitrary ID Page may be provided in the firmware image.\
+We note that the information section is not signed, so an arbitrary ID Page may be provided in the firmware image (but we must take into account fixing CRC values, if they exist).\
 \
 Finally, further down, we have the actual flash writing logic that commits the firmware chunks to non-volatile memory:
 
