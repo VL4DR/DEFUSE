@@ -4,8 +4,8 @@ This section covers (in a fairly high level) what are the steps taken when a fir
 
 ## Firmware Update Structure Summary
 The general structure of a Phison firmware update for E12/E16/E18-based drives is like so:
-* Main Phison header of size 0x200 bytes which holds information about the code/info sections within the firmware image, as well as some fields that identify the controller the firmware update targets.
-* A list of sections, each section includes a header of size 0x200 bytes with the *CODE BLOCK* magic.
+* Main Phison header of size *0x200* bytes which holds information about the code/info sections within the firmware image, as well as some fields that identify the controller the firmware update targets.
+* A list of sections, each section includes a header of size *0x200* bytes with the *CODE BLOCK* magic.
     - An information section which does not contain code, but does contain information about the ID Page, for example.
     - (Presumably) *Loader* section, which contains the code for the firmware loader. It is a code section, which is the *actual* binary the BootROM verifies and loads. It is responsible for loading the actual firmware application to memory and jumping to it.
     - *FW* section, which contains the code for the firmware application. This contains the bulk of the controller's code.
