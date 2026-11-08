@@ -9,5 +9,5 @@ Exploitation assumes we have *volatile* code execution on the target controller.
 
 # Notes
 * Due to the nature of the vulnerability, no exploitation code is provided here.
-* The attack vector is local and requires root/administrator privileges on the host communicating with the controller, since exploitation involves sending Vendor Specific Commands (VSCs).
+* The attack vector is local and requires root/administrator privileges on the host communicating with the controller, since exploitation involves sending Vendor Specific Commands (VSCs). However, physical access to the drive is *not* required.
 * The documentation is based on our understanding of firmware code, so it is not guaranteed to be perfect. If some information is inaccurate or some clarifications are needed, you can email log1kxd at gmail.com.
