@@ -17,7 +17,7 @@ There are two main flows which may be used to update the controller's firmware:
 - The regular NVMe flow, which uses multiple *download* NVMe commands, followed by a *commit* command, which writes the accumulated firmware data to the controller's non-volatile memory.
 - The Phison VSC flow, which enables updating the firmware with some fewer checks and without the main Phison header, but rather just the information and code sections glued together.
 
-We will be using the Phison VSC flow for convenience.
+We will be referring to the Phison VSC flow for convenience.
 
 ## Firmware Update Overview
 There are two main steps that are taken when a firmware is updated:

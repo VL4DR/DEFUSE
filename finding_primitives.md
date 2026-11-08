@@ -1,4 +1,4 @@
-# Finding a Primitive
+# Finding Primitives
 
 Given the full BootROM code, we can proceed to finding primitives.
 
