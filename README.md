@@ -8,6 +8,6 @@ Exploitation assumes we have *volatile* code execution on the target controller.
 * We create a sequence of operations to exploit the primitives we found in the previous step to enable uploading unsigned firmware binary to the controller, persistently. As a prerequisite to understanding exploitation, please refer to [Firmware Update Process](./firmware_update.md) section. The exploitation steps can found under [Exploitation](./exploitation.md) section.
 
 # Notes
-* Due to the nature of the vulnerability, no exploitation code is provided here.
+* Due to the nature of the vulnerability, no exploitation code is provided here. Also, since the BootROM in this case is presumably immutable, this issue *cannot* be patched for already-shipped devices.
 * The attack vector is local and requires root/administrator privileges on the host communicating with the controller, since exploitation involves sending Vendor Specific Commands (VSCs). However, physical access to the drive is *not* required.
 * The documentation is based on our understanding of firmware code, so it is not guaranteed to be perfect. If some information is inaccurate or some clarifications are needed, you can email log1kxd at gmail.com.
