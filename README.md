@@ -12,7 +12,7 @@ Uploading unsigned firmware applications was successful on the following drives:
 * PNY CS3030 (Phison E12)
 * Kingston KC3000 (Phison E18)
 * Sabrent Rocket 4 Plus (Phison E18)
-\
+
 For transparency, the KC3000 drive's firmware appeared to not be signed, so this bypass might not be truly needed for that specific drive. However, the Rocket 4 Plus drive, at least based on the configured fuses, appeared to be signed properly, and this technique was demonstrated there successfully.\
 Drives based on E12/E16/E18 controllers from other vendors (and other models) are probably also affected.
 
