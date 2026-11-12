@@ -1,5 +1,5 @@
 # DEFUSE
-*DEFUSE* is a technique that enables bypassing Secure Boot on some NVMe solid state drives (SSDs) based on Phison E12/E16/E18 controllers.
+*DEFUSE* is a technique that enables bypassing Secure Boot on some NVMe solid state drives (SSDs) based on Phison E12/E18 controllers (and possibly others).
 
 # Documentation
 Exploitation assumes we have *volatile* code execution on the target controller. See [PhisonExecutor](https://github.com/VL4DR/PhisonExecutor) repository that achieves this on some of the latest firmwares. Given this capability:
@@ -14,7 +14,7 @@ Uploading unsigned firmware applications was successful on the following drives:
 * Sabrent Rocket 4 Plus (Phison E18)
 
 For transparency, the KC3000 drive's firmware appeared to not be signed, so this bypass might not be truly needed for that specific drive. However, the Rocket 4 Plus drive, at least based on the configured fuses, appeared to be signed properly, and this technique was demonstrated there successfully.\
-Drives based on E12/E16/E18 controllers from other vendors (and other models) are probably also affected.
+Drives based on E12/E18 controllers from other vendors (and other models) are probably also affected.
 
 # Notes
 * Due to the nature of the vulnerability, no exploitation code is provided here. Also, since the BootROM in this case is presumably immutable, this issue *cannot* be patched for already-shipped devices.
